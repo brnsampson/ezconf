@@ -1,0 +1,6 @@
+github.com/brnsampson/optional v0.2.3 h1:yiHgT8+3ARQ+nl4HLusV0+EzCI7UzmtknUl3YawY/YY=
+github.com/brnsampson/optional v0.2.3/go.mod h1:KHeJXYf0mfjsee6HftyKn2ffljt+I6zMUUE21wiS74A=
+github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
+github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+gotest.tools/v3 v3.5.2 h1:7koQfIKdy+I8UTetycgUqXWSDwpgv193Ka+qRsmBY8Q=
+gotest.tools/v3 v3.5.2/go.mod h1:LtdLGcnqToBH83WByAAi/wiwSFCArdFIUV/xxN4pcjA=
