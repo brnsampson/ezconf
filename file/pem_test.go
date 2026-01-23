@@ -1,4 +1,4 @@
-package ezconf_test
+package file_test
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/brnsampson/optional/file"
+	"github.com/brnsampson/ezconf/file"
 	"gotest.tools/v3/assert"
 )
 
@@ -42,19 +42,19 @@ func TestCertSetFilePerms(t *testing.T) {
 	assert.Equal(t, file.CertFilePerms, s.Mode())
 
 	// Now that the sanity of the function itself has been checked, let's apply it to the file we are testing against.
-	path = "./testing/rsa/cert.pem"
+	path = "../testing/rsa/cert.pem"
 	o, err = file.SomeCert(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ecdsa/cert.pem"
+	path = "../testing/ecdsa/cert.pem"
 	o, err = file.SomeCert(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ed25519/cert.pem"
+	path = "../testing/ed25519/cert.pem"
 	o, err = file.SomeCert(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
@@ -62,7 +62,7 @@ func TestCertSetFilePerms(t *testing.T) {
 }
 
 func TestCertGet(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	o, err := file.SomeCert(path)
 	assert.NilError(t, err)
 	abs, err := filepath.Abs(path)
@@ -76,7 +76,7 @@ func TestCertGet(t *testing.T) {
 }
 
 func TestCertString(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -87,7 +87,7 @@ func TestCertString(t *testing.T) {
 }
 
 func TestCertMarshalText(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -101,7 +101,7 @@ func TestCertMarshalText(t *testing.T) {
 }
 
 func TestCertUnmarshalText(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	nullCert := "null"
 	intCert := "42"
 	abs, err := filepath.Abs(path)
@@ -137,8 +137,8 @@ func TestCertUnmarshalText(t *testing.T) {
 }
 
 func TestCertFilePermsValid(t *testing.T) {
-	valid_path := "./testing/rsa/cert.pem"
-	invalid_path := "./testing/rsa/cert_bad_perms.pem"
+	valid_path := "../testing/rsa/cert.pem"
+	invalid_path := "../testing/rsa/cert_bad_perms.pem"
 
 	// Make sure that the invalid file perms are actually set!
 	err := os.Chmod(invalid_path, 0666)
@@ -161,7 +161,7 @@ func TestCertFilePermsValid(t *testing.T) {
 
 func TestCertReadRSACerts(t *testing.T) {
 	expectedCertIssuer := "CN=www.whobe.us,OU=optional,O=BS Workshops,L=Who knows,ST=California,C=US"
-	certPath := "./testing/rsa/cert.pem"
+	certPath := "../testing/rsa/cert.pem"
 
 	c, err := file.SomeCert(certPath)
 	assert.NilError(t, err)
@@ -177,7 +177,7 @@ func TestCertReadRSACerts(t *testing.T) {
 
 func TestCertReadECDSACerts(t *testing.T) {
 	expectedCertIssuer := "CN=www.whobe.us,OU=optional,O=BS Workshops,L=Who knows,ST=California,C=US"
-	certPath := "./testing/ecdsa/cert.pem"
+	certPath := "../testing/ecdsa/cert.pem"
 
 	c, err := file.SomeCert(certPath)
 	assert.NilError(t, err)
@@ -193,7 +193,7 @@ func TestCertReadECDSACerts(t *testing.T) {
 
 func TestCertReadED25519Certs(t *testing.T) {
 	expectedCertIssuer := "CN=www.whobe.us,OU=optional,O=BS Workshops,L=Who knows,ST=California,C=US"
-	certPath := "./testing/ed25519/cert.pem"
+	certPath := "../testing/ed25519/cert.pem"
 
 	c, err := file.SomeCert(certPath)
 	assert.NilError(t, err)
@@ -209,7 +209,7 @@ func TestCertReadED25519Certs(t *testing.T) {
 
 func TestCertFileWriteCerts(t *testing.T) {
 	// Read in valid certificates (tested above)
-	certPath := "./testing/rsa/cert.pem"
+	certPath := "../testing/rsa/cert.pem"
 	c, err := file.SomeCert(certPath)
 	assert.NilError(t, err)
 
@@ -264,19 +264,19 @@ func TestPubKeySetFilePerms(t *testing.T) {
 	assert.Equal(t, file.PubKeyFilePerms, s.Mode())
 
 	// Now that the sanity of the function itself has been checked, let's apply it to the file we are testing against.
-	path = "./testing/rsa/pubkey.pem"
+	path = "../testing/rsa/pubkey.pem"
 	o, err = file.SomePubKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ecdsa/pub.pem"
+	path = "../testing/ecdsa/pub.pem"
 	o, err = file.SomePubKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ed25519/pub.pem"
+	path = "../testing/ed25519/pub.pem"
 	o, err = file.SomePubKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
@@ -284,7 +284,7 @@ func TestPubKeySetFilePerms(t *testing.T) {
 }
 
 func TestPubKeyString(t *testing.T) {
-	path := "./testing/rsa/pubkey.pem"
+	path := "../testing/rsa/pubkey.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -295,7 +295,7 @@ func TestPubKeyString(t *testing.T) {
 }
 
 func TestPubKeyMarshalText(t *testing.T) {
-	path := "./testing/rsa/pubkey.pem"
+	path := "../testing/rsa/pubkey.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -309,7 +309,7 @@ func TestPubKeyMarshalText(t *testing.T) {
 }
 
 func TestPubKeyUnmarshalText(t *testing.T) {
-	path := "./testing/rsa/pubkey.pem"
+	path := "../testing/rsa/pubkey.pem"
 	nullPubKey := "null"
 	intPubKey := "42"
 	abs, err := filepath.Abs(path)
@@ -345,8 +345,8 @@ func TestPubKeyUnmarshalText(t *testing.T) {
 }
 
 func TestPubKeyFilePermsValid(t *testing.T) {
-	valid_path := "./testing/rsa/pubkey.pem"
-	invalid_path := "./testing/rsa/pubkey_bad_perms.pem"
+	valid_path := "../testing/rsa/pubkey.pem"
+	invalid_path := "../testing/rsa/pubkey_bad_perms.pem"
 
 	// Make sure that the invalid file perms are actually set!
 	err := os.Chmod(invalid_path, 0666)
@@ -368,7 +368,7 @@ func TestPubKeyFilePermsValid(t *testing.T) {
 }
 
 func TestPubKeyReadPublicKeysRSA(t *testing.T) {
-	pubPath := "./testing/rsa/pubkey.pem"
+	pubPath := "../testing/rsa/pubkey.pem"
 	p, err := file.SomePubKey(pubPath)
 	assert.NilError(t, err)
 	keys, err := p.ReadPublicKeys()
@@ -386,7 +386,7 @@ func TestPubKeyReadPublicKeysRSA(t *testing.T) {
 }
 
 func TestPubKeyReadPublicKeysECDSA(t *testing.T) {
-	pubPath := "./testing/ecdsa/pub.pem"
+	pubPath := "../testing/ecdsa/pub.pem"
 
 	p, err := file.SomePubKey(pubPath)
 	assert.NilError(t, err)
@@ -405,7 +405,7 @@ func TestPubKeyReadPublicKeysECDSA(t *testing.T) {
 }
 
 func TestPubKeyReadPublicKeysED25519(t *testing.T) {
-	pubPath := "./testing/ed25519/pub.pem"
+	pubPath := "../testing/ed25519/pub.pem"
 
 	p, err := file.SomePubKey(pubPath)
 	assert.NilError(t, err)
@@ -425,7 +425,7 @@ func TestPubKeyReadPublicKeysED25519(t *testing.T) {
 
 func TestPubKeyWritePubKey(t *testing.T) {
 	// Read in valid certificates (tested above)
-	pubPath := "./testing/rsa/pubkey.pem"
+	pubPath := "../testing/rsa/pubkey.pem"
 	c, err := file.SomePubKey(pubPath)
 	assert.NilError(t, err)
 	keys, err := c.ReadPublicKeys()
@@ -491,19 +491,19 @@ func TestPrivateKeySetFilePerms(t *testing.T) {
 	assert.Equal(t, file.KeyFilePerms, s.Mode())
 
 	// Now that the sanity of the function itself has been checked, let's apply it to the file we are testing against.
-	path = "./testing/rsa/key.pem"
+	path = "../testing/rsa/key.pem"
 	o, err = file.SomePrivateKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ecdsa/key.pem"
+	path = "../testing/ecdsa/key.pem"
 	o, err = file.SomePrivateKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
 	assert.NilError(t, err)
 
-	path = "./testing/ed25519/key.pem"
+	path = "../testing/ed25519/key.pem"
 	o, err = file.SomePrivateKey(path)
 	assert.NilError(t, err)
 	err = o.SetFilePerms()
@@ -511,7 +511,7 @@ func TestPrivateKeySetFilePerms(t *testing.T) {
 }
 
 func TestPrivateKeyString(t *testing.T) {
-	path := "./testing/rsa/key.pem"
+	path := "../testing/rsa/key.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -522,7 +522,7 @@ func TestPrivateKeyString(t *testing.T) {
 }
 
 func TestPrivateKeyMarshalText(t *testing.T) {
-	path := "./testing/rsa/key.pem"
+	path := "../testing/rsa/key.pem"
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
 	assert.NilError(t, err)
@@ -536,7 +536,7 @@ func TestPrivateKeyMarshalText(t *testing.T) {
 }
 
 func TestPrivateKeyUnmarshalText(t *testing.T) {
-	path := "./testing/rsa/key.pem"
+	path := "../testing/rsa/key.pem"
 	nullPrivateKey := "null"
 	intPrivateKey := "42"
 	abs, err := filepath.Abs(path)
@@ -572,8 +572,8 @@ func TestPrivateKeyUnmarshalText(t *testing.T) {
 }
 
 func TestPrivateKeyFilePermsValid(t *testing.T) {
-	valid_path := "./testing/rsa/key.pem"
-	invalid_path := "./testing/rsa/key_bad_perms.pem"
+	valid_path := "../testing/rsa/key.pem"
+	invalid_path := "../testing/rsa/key_bad_perms.pem"
 
 	// Make sure that the invalid file perms are actually set!
 	err := os.Chmod(invalid_path, 0666)
@@ -595,8 +595,8 @@ func TestPrivateKeyFilePermsValid(t *testing.T) {
 }
 
 func TestPrivateKeyReadCert(t *testing.T) {
-	keyPath := "./testing/rsa/key.pem"
-	certPath := "./testing/rsa/cert.pem"
+	keyPath := "../testing/rsa/key.pem"
+	certPath := "../testing/rsa/cert.pem"
 	ko, err := file.SomePrivateKey(keyPath)
 	assert.NilError(t, err)
 	co, err := file.SomeCert(certPath)
@@ -632,7 +632,7 @@ func TestPrivateKeyReadCert(t *testing.T) {
 }
 
 func TestPrivateKeyReadPrivateKeyRSA(t *testing.T) {
-	keyPath := "./testing/rsa/key.pem"
+	keyPath := "../testing/rsa/key.pem"
 	p, err := file.SomePrivateKey(keyPath)
 	assert.NilError(t, err)
 	key, err := p.ReadPrivateKey()
@@ -646,7 +646,7 @@ func TestPrivateKeyReadPrivateKeyRSA(t *testing.T) {
 }
 
 func TestPrivateKeyReadPrivateKeyECDSA(t *testing.T) {
-	keyPath := "./testing/ecdsa/key.pem"
+	keyPath := "../testing/ecdsa/key.pem"
 
 	p, err := file.SomePrivateKey(keyPath)
 	assert.NilError(t, err)
@@ -661,7 +661,7 @@ func TestPrivateKeyReadPrivateKeyECDSA(t *testing.T) {
 }
 
 func TestPrivateKeyReadPrivateKeyED25519(t *testing.T) {
-	keyPath := "./testing/ed25519/key.pem"
+	keyPath := "../testing/ed25519/key.pem"
 
 	p, err := file.SomePrivateKey(keyPath)
 	assert.NilError(t, err)
@@ -677,7 +677,7 @@ func TestPrivateKeyReadPrivateKeyED25519(t *testing.T) {
 
 func TestPrivateKeyWritePrivateKey(t *testing.T) {
 	// Read in valid certificates (tested above)
-	keyPath := "./testing/rsa/key.pem"
+	keyPath := "../testing/rsa/key.pem"
 	c, err := file.SomePrivateKey(keyPath)
 	assert.NilError(t, err)
 	key, err := c.ReadPrivateKey()

@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/brnsampson/optional/file"
+	"github.com/brnsampson/ezconf/file"
 )
 
 func TLSCertificate(certPath, keyPath *string) error {

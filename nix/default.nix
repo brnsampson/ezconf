@@ -3,5 +3,5 @@ let
   lib = pkgs.lib;
 in
 {
-  ezconf = pkgs.callPackage ./exconf.nix
+  ezconf = pkgs.callPackage ./ezconf.nix
 }

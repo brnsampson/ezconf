@@ -1,4 +1,4 @@
-package ezconf
+package file
 
 import (
 	"io/fs"

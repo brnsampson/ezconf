@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/brnsampson/optional/file"
+	"github.com/brnsampson/ezconf/file"
 )
 
 func LoadingAndReadingFiles(path *string) error {

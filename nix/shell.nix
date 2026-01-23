@@ -2,4 +2,7 @@
 
 pkgs.mkShell {
   packages = [ pkgs.go pkgs.glow ];
+  shellHook = ''
+      alias vim="nvim"
+    '';
 }

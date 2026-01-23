@@ -25,18 +25,19 @@
         pkgs = pkgsFor system;
       in
       {
-        default = import ./nix/shell.nix {};
+        default = import ./shell.nix { inherit pkgs; };
       }
     );
 
-    #packages = forEachSystem (
-    #  system:
-    #  let
-    #    pkgs = pkgsFor system;
-    #  in
-    #  {
-
-    #  }
-    #);
+    packages = forEachSystem (
+      system:
+      let
+        pkgs = pkgsFor system;
+        local = import ./default.nix { pkgs }
+      in
+      {
+        default = local.ezconf
+      }
+    );
   };
 }

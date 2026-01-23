@@ -3,7 +3,9 @@ module github.com/brnsampson/ezconf
 go 1.25.4
 
 require (
-	github.com/brnsampson/optional v0.2.3
+	github.com/BurntSushi/toml v1.3.2
+	github.com/brnsampson/optional v0.3.0
+	go-simpler.org/env v0.12.0
 	gotest.tools/v3 v3.5.2
 )
 

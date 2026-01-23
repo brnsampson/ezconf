@@ -1,4 +1,4 @@
-package ezconf_test
+package file_test
 
 import (
 	"os"
@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/brnsampson/optional/file"
+	"github.com/brnsampson/ezconf/file"
 	"gotest.tools/v3/assert"
 )
 
@@ -22,7 +22,7 @@ func TestFileType(t *testing.T) {
 	assert.ErrorIs(t, err, os.ErrNotExist)
 	assert.Assert(t, !valid)
 
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	o = file.SomeFile(path)
 	assert.Assert(t, o.Exists())
 
@@ -36,7 +36,7 @@ func TestFileType(t *testing.T) {
 }
 
 func TestFileGet(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	o := file.SomeFile(path)
 	abs, err := filepath.Abs(path)
 	// an error here doesn't mean our library is broken, just that the path we chose to test with isn't valid.
@@ -55,7 +55,7 @@ func TestFileGet(t *testing.T) {
 }
 
 func TestFileString(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	noneStr := "None[File]"
 
 	o := file.SomeFile(path)
@@ -67,7 +67,7 @@ func TestFileString(t *testing.T) {
 }
 
 func TestFileMarshalText(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 
 	o := file.SomeFile(path)
 
@@ -77,7 +77,7 @@ func TestFileMarshalText(t *testing.T) {
 }
 
 func TestFileUnmarshalText(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	nullFile := "null"
 	intFile := "42"
 
@@ -107,7 +107,7 @@ func TestFileUnmarshalText(t *testing.T) {
 }
 
 func TestFileReadFile(t *testing.T) {
-	path := "./testing/rsa/cert.pem"
+	path := "../testing/rsa/cert.pem"
 	badpath := "does/not/exist.txt"
 	o := file.SomeFile(path)
 

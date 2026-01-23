@@ -1,6 +1,12 @@
+github.com/BurntSushi/toml v1.3.2 h1:o7IhLm0Msx3BaB+n3Ag7L8EVlByGnpq14C4YWiu/gL8=
+github.com/BurntSushi/toml v1.3.2/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/brnsampson/optional v0.2.3 h1:yiHgT8+3ARQ+nl4HLusV0+EzCI7UzmtknUl3YawY/YY=
 github.com/brnsampson/optional v0.2.3/go.mod h1:KHeJXYf0mfjsee6HftyKn2ffljt+I6zMUUE21wiS74A=
+github.com/brnsampson/optional v0.3.0 h1:0DfKb0frd5aab+YCKQz2QgAX8NGV1tcJxKidiJYXNoA=
+github.com/brnsampson/optional v0.3.0/go.mod h1:KHeJXYf0mfjsee6HftyKn2ffljt+I6zMUUE21wiS74A=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
 github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+go-simpler.org/env v0.12.0 h1:kt/lBts0J1kjWJAnB740goNdvwNxt5emhYngL0Fzufs=
+go-simpler.org/env v0.12.0/go.mod h1:cc/5Md9JCUM7LVLtN0HYjPTDcI3Q8TDaPlNTAlDU+WI=
 gotest.tools/v3 v3.5.2 h1:7koQfIKdy+I8UTetycgUqXWSDwpgv193Ka+qRsmBY8Q=
 gotest.tools/v3 v3.5.2/go.mod h1:LtdLGcnqToBH83WByAAi/wiwSFCArdFIUV/xxN4pcjA=
